@@ -12,7 +12,7 @@ namespace InVentSoft.Testing
     {
         static void Main(string[] args)
         {
-
+            /*
             categoria nuevaCategoria = new categoria
             {
                 nombre = "Nueva Categoria",
@@ -22,7 +22,7 @@ namespace InVentSoft.Testing
             bool categoriaAgregada = InVentSoft.BLL.CategoriaService.AgregarCategoria(nuevaCategoria);
             Console.WriteLine("¿La categoría se agregó correctamente? " + categoriaAgregada);
 
-            Console.ReadKey();
+            Console.ReadKey();*/
             List<CategoriaDTO> categorias = InVentSoft.BLL.CategoriaService.ObtenerCategorias();
            
             // Mostrar las categorías obtenidas
@@ -30,6 +30,16 @@ namespace InVentSoft.Testing
             foreach (var categoria in categorias)
             {
                 Console.WriteLine($"ID: {categoria.Id}, Nombre: {categoria.Nombre}, IVA: {categoria.Iva}, Grupo de alimentos: {categoria.GrupoAlimentos}");
+            }
+
+            Console.ReadKey();
+
+            List<ProductoDTO> productos = InVentSoft.BLL.ProductoService.ObtenerProductos();
+            // Mostrar los productos obtenidos
+            Console.WriteLine("Productos:");
+            foreach (var producto in productos)
+            {
+                Console.WriteLine($"ID: {producto.Id}, Nombre: {producto.Nombre}, Categoría: {producto.cat.nombre}, Precio sin IVA: {producto.PrecioSinIva}, IVA: {producto.Iva}, Unidad de venta: {producto.UnidadVenta}, Stock: {producto.Stock}");
             }
 
             Console.ReadKey();
