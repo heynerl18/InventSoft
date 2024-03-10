@@ -14,4 +14,7 @@ Pasos de instalación de dependencias:
 - `consultarCategorias()`: Retorna una lista de todas las categorías almacenadas en la base de datos.
 - `consultarCategoria(long  id)`: Retorna una categoria por id
 
+## ProductoBL
+- `ObtenerProductos`: Retorna todos los registros de productos con sus categorias
+
 
