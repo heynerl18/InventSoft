@@ -15,6 +15,10 @@ Pasos de instalación de dependencias:
 - `consultarCategoria(long  id)`: Retorna una categoria por id
 
 ## ProductoBL
-- `ObtenerProductos`: Retorna todos los registros de productos con sus categorias
+- `ObtenerProductos()`: Retorna una lista de todos los productos almacenados en la base de datos.
+- `ConsultarProducto(int id)`: Retorna un producto específico buscado por su ID.
+- `AgregarProducto(producto producto)`: Agrega un nuevo producto a la base de datos.
+- `ModificarProducto(producto producto)`: Modifica la información de un producto existente en la base de datos.
+- `EliminarProducto(int id)`: Elimina un producto de la base de datos según su ID.
 
 
