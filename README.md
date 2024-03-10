@@ -23,4 +23,17 @@ Pasos de instalación de dependencias:
 - `ObtenerProductosPorCategorias(List<int> categoriasSeleccionadas)`: Este método retorna una lista de productos filtrados por las categorías seleccionadas. Recibe como parámetro una lista de enteros que representan los IDs de las categorías seleccionadas por el usuario.
 - `ObtenerProductosPorIva(decimal? porcentajeIva = null)`: Este método retorna una lista de productos filtrados por un porcentaje de IVA especificado. Si no se proporciona ningún valor para el porcentaje de IVA, devuelve todos los productos. El parámetro porcentajeIva es opcional y representa el porcentaje de IVA deseado, expresado como un número decimal.
 
+## Pasos para parte de ventas
+- Diseño de la interfaz de usuario: Crea una página web con controles para mostrar los productos disponibles, permitir al usuario seleccionar la cantidad deseada, calcular el subtotal, el IVA total y el total a pagar. También incluye un botón de "Pagar" para finalizar la compra.
+
+- Obtener productos del inventario: Utiliza el método ObtenerProductos del servicio ProductoService para obtener la lista de productos disponibles en el inventario. Puedes mostrar estos productos en una cuadrícula o lista en la interfaz de usuario.
+
+- Selección de productos y cálculos de precios: Permite al usuario seleccionar productos del inventario y especificar la cantidad deseada. Con cada selección de producto y cantidad, calcula el subtotal, el IVA total y el total a pagar. Puedes hacer estos cálculos en el lado del cliente utilizando JavaScript o en el lado del servidor en el código detrás de la página web.
+
+- Reducción del stock al pagar: Cuando el usuario hace clic en el botón "Pagar", utiliza el servicio ProductoService para reducir el stock disponible de cada producto vendido. Puedes llamar al método ModificarProducto del servicio para actualizar la cantidad de stock de cada producto.
+
+- Generación de reporte: Después de que se haya completado la transacción de compra, genera un reporte que incluya la fecha y hora actual, el subtotal, el IVA total y el total pagado. Puedes guardar estos detalles en una base de datos o en un archivo de registro.
+
+- Interacción con la base de datos: Asegúrate de tener un acceso adecuado a la base de datos para realizar operaciones como obtener productos, modificar el stock y guardar detalles de la transacción.
+
 
