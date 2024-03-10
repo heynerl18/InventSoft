@@ -20,5 +20,7 @@ Pasos de instalación de dependencias:
 - `AgregarProducto(producto producto)`: Agrega un nuevo producto a la base de datos.
 - `ModificarProducto(producto producto)`: Modifica la información de un producto existente en la base de datos.
 - `EliminarProducto(int id)`: Elimina un producto de la base de datos según su ID.
+- `ObtenerProductosPorCategorias(List<int> categoriasSeleccionadas)`: Este método retorna una lista de productos filtrados por las categorías seleccionadas. Recibe como parámetro una lista de enteros que representan los IDs de las categorías seleccionadas por el usuario.
+- `ObtenerProductosPorIva(decimal? porcentajeIva = null)`: Este método retorna una lista de productos filtrados por un porcentaje de IVA especificado. Si no se proporciona ningún valor para el porcentaje de IVA, devuelve todos los productos. El parámetro porcentajeIva es opcional y representa el porcentaje de IVA deseado, expresado como un número decimal.
 
 

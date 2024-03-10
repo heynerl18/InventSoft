@@ -32,5 +32,15 @@ namespace InVentSoft.BLL
         {
             return InVentSoft.DAL.ProductoService.EliminarProducto(id);
         }
+
+        public static List<ProductoDTO> ObtenerProductosPorCategorias(List<int> categoriasSeleccionadas)
+        {
+            return InVentSoft.DAL.ProductoService.ObtenerProductosPorCategorias(categoriasSeleccionadas);
+        }
+
+        public static List<ProductoDTO> ObtenerProductosPorIva(decimal? porcentajeIva = null)
+        {
+            return InVentSoft.DAL.ProductoService.ObtenerProductosPorIva(porcentajeIva);
+        }
     }
 }

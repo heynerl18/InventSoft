@@ -109,5 +109,75 @@ namespace InVentSoft.DAL
 
             return resultado;
         }
+
+        public static List<ProductoDTO> ObtenerProductosPorCategorias(List<int> categoriasSeleccionadas)
+        {
+            List<ProductoDTO> ProductoDTOs = new List<ProductoDTO>();
+            List<producto> productos = new List<producto>();
+
+            using (inventEntities db = new inventEntities())
+            {
+                if (categoriasSeleccionadas != null && categoriasSeleccionadas.Any())
+                {
+                    productos = db.producto
+                        .Include("categoria")
+                        .Where(p => categoriasSeleccionadas.Contains((int)p.categoriaid))
+                        .ToList();
+                }
+                else
+                {
+                    productos = db.producto.Include("categoria").ToList();
+                }
+
+                if (productos != null)
+                {
+                    foreach (producto p in productos)
+                    {
+                        ProductoDTOs.Add(new ProductoDTO(p));
+                    }
+                }
+            }
+
+            return ProductoDTOs;
+        }
+
+        public static List<ProductoDTO> ObtenerProductosPorIva(decimal? porcentajeIva = null)
+        {
+            List<ProductoDTO> ProductoDTOs = new List<ProductoDTO>();
+
+            using (inventEntities db = new inventEntities())
+            {
+                IQueryable<producto> query = db.producto.Include("categoria");
+
+                // Si se proporciona un porcentaje de IVA, filtrar por ese valor
+                if (porcentajeIva.HasValue)
+                {
+                    query = query.Where(p => p.Iva <= porcentajeIva.Value);
+                }
+                else
+                {
+                    foreach (var producto in query)
+                    {
+                        // Si el producto no tiene un IVA asociado, verificar el porcentaje de IVA de la categoría
+                        if (!producto.Iva.HasValue && producto.categoria != null && producto.categoria.iva.HasValue)
+                        {
+                            query = query.Where(p => p.categoria.iva <= producto.categoria.iva);
+                        }
+                    }
+                }
+
+                List<producto> productos = query.ToList();
+
+                if (productos != null)
+                {
+                    foreach (producto p in productos)
+                    {
+                        ProductoDTOs.Add(new ProductoDTO(p));
+                    }
+                }
+            }
+
+            return ProductoDTOs;
+        }
     }
 }
