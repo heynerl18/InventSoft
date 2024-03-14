@@ -61,22 +61,31 @@ namespace InVentSoft.DAL
 
         public static bool ModificarCategoria(categoria cat)
         {
-            bool resultado = false;
-
             try
             {
                 using (inventEntities db = new inventEntities())
                 {
-                    db.Entry(cat).CurrentValues.SetValues(cat);
-                    db.SaveChanges();
-                    resultado = true;
+                    var existingCat = db.categoria.Find(cat.id);
+                    if (existingCat != null)
+                    {
+                        db.Entry(existingCat).CurrentValues.SetValues(cat);
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        // Registro de un posible error
+                        System.Diagnostics.Debug.WriteLine("No se encontró la categoría con el ID proporcionado.");
+                        return false;
+                    }
                 }
             }
             catch (Exception ex)
             {
-                return resultado;
+                // Registro de excepción
+                System.Diagnostics.Debug.WriteLine($"Error al modificar la categoría: {ex.Message}");
+                return false;
             }
-            return resultado;
         }
 
         public static bool EliminarCategoria(long id)

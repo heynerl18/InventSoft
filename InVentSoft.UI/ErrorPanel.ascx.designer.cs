@@ -11,16 +11,25 @@ namespace InVentSoft.UI
 {
 
 
-    public partial class SiteMaster
+    public partial class ErrorPanel
     {
 
         /// <summary>
-        /// Control MainContent.
+        /// Control pErrores.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.Panel pErrores;
+
+        /// <summary>
+        /// Control rpErrores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rpErrores;
     }
 }

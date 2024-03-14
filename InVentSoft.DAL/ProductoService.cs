@@ -66,22 +66,31 @@ namespace InVentSoft.DAL
 
         public static bool ModificarProducto(producto producto)
         {
-            bool resultado = false;
-
             try
             {
                 using (inventEntities db = new inventEntities())
                 {
-                    db.Entry(producto).CurrentValues.SetValues(producto);
-                    db.SaveChanges();
-                    resultado = true;
+                    var existingProduct = db.producto.Find(producto.id);
+                    if (existingProduct != null)
+                    {
+                        db.Entry(existingProduct).CurrentValues.SetValues(producto);
+                        db.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        // Registro de un posible error
+                        System.Diagnostics.Debug.WriteLine("No se encontró el producto con el ID proporcionado.");
+                        return false;
+                    }
                 }
             }
             catch (Exception ex)
             {
-                return resultado;
+                // Registro de excepción
+                System.Diagnostics.Debug.WriteLine($"Error al modificar el producto: {ex.Message}");
+                return false;
             }
-            return resultado;
         }
 
         public static bool EliminarProducto(int id)
