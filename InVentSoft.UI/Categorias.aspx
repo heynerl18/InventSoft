@@ -9,7 +9,7 @@
     </style>
 
     <h2 class="text-center">Categorías</h2>
-    <asp:Button ID="Crearbtn" CssClass="btn btn-success crear-btn" runat="server" Text="Crear" OnClick="Crearbtn_Click"/>
+    <asp:Button ID="Crearbtn" CssClass="btn btn-success crear-btn" runat="server" Text="Crear Nueva Categoria" OnClick="Crearbtn_Click"/>
     <hr />
     <asp:Panel ID="pnlAlertaExitoso" CssClass="alert alert-success" runat="server" Visible="false">
         <asp:Label ID="labelsuccess" Text="" runat="server" />
