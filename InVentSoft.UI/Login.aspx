@@ -25,14 +25,18 @@
                 <div class="mb-md-5 mt-md-4 pb-5">
 
                   <h2 class="fw-bold mb-4 text-uppercase">Login</h2>
-                  
+
                     <asp:Panel ID="pErrores" CssClass="alert alert-danger" runat="server" Visible="false">
-                     <asp:Repeater ID="rpErrores" runat="server">
-                        <ItemTemplate>
-                           <li><%# Container.DataItem %></li>
-                        </ItemTemplate>
-                     </asp:Repeater>
-                   </asp:Panel>
+
+                        <ul class="list-unstyled">
+
+                            <asp:Repeater ID="rpErrores" runat="server">
+                                <ItemTemplate>
+                                    <li><%# Container.DataItem %></li>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </ul>
+                    </asp:Panel>
 
                    <asp:Panel ID="panelAlertaError" CssClass="alert alert-danger lert-dismissible fade show" role="alert" runat="server" Visible="false">
                       <asp:Label ID="labelError" Text="" runat="server" />
@@ -41,14 +45,16 @@
                   </asp:Panel>
                    <form id="loginform" runat="server">
                                             
-                      <div class="mb-4">
+                      <div class="form-floating mb-4">
                           <asp:TextBox ID="usuario" runat="server" CssClass="form-control form-control-lg" placeholder="Ingrese su usuario" />
+                          <label for="usuario">Ingrese su usuario</label>
                       </div>
 
-                      <div class="mb-4">
+                      <div class="form-floating mb-4">
                           <asp:TextBox runat="server" ID="contrasenia" Type="Password" CssClass="form-control form-control-lg" placeholder="Ingrese su contraseña" />
+                          <label for="contrasenia">Ingrese su contraseña</label>
                       </div>
-                       <asp:Button ID="BtnLogin" Text="Ingresar" CssClass="btn btn-outline-primary btn-lg px-5" runat="server" OnClick="BtnLogin_Click" />
+                       <asp:Button ID="BtnLogin" Text="Ingresar" CssClass="btn btn-primary btn-lg px-5" runat="server" OnClick="BtnLogin_Click" />
                    </form>
                 </div>
               </div>

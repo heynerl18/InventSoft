@@ -43,7 +43,7 @@ namespace InVentSoft.UI
 
                 if (USUARIO == usuario.Text && PASSWORD == contrasenia.Text)
                 {
-                    Response.Redirect("/Default");
+                    Response.Redirect("/Ventas");
                 }
                 else
                 {

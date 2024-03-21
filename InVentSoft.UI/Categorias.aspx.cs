@@ -54,7 +54,7 @@ namespace InVentSoft.UI
                 categoria nuevaCategoria = new categoria
                 {
                     nombre = nombre.Text,
-                    iva = Convert.ToDecimal(iva.Text),
+                    iva = (decimal)int.Parse(iva.Text) / 100,
                     grupoAlimentos = grupoalimentos.SelectedItem.ToString()
                 };
 
@@ -94,7 +94,7 @@ namespace InVentSoft.UI
                 {
                     id = int.Parse(idcategoriaeditar.Value),
                     nombre = txtnombre.Text,
-                    iva = Convert.ToDecimal(txtiva.Text),
+                    iva = (decimal)int.Parse(txtiva.Text) / 100,
                     grupoAlimentos = listgrupoalimentos.SelectedItem.ToString()
                 };
                 bool resultadoDeEditado = BLL.CategoriaService.ModificarCategoria(editCategoria);
