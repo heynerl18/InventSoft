@@ -19,7 +19,7 @@
             Reportes por porcentajes de iva
             <div class="row">
                 <div class="col-sm-3">
-                    <asp:TextBox ID="reporteporcentajeiva" placeholder="Ingrese el porcentaje" Type="Number" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtreporteporcentajeiva" placeholder="Ingrese el porcentaje" Type="Number" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-sm-9">
                     <asp:Button ID="BtnReportePorcentajaIva" Text="Filtrar por iva" CssClass="btn btn-success" runat="server" OnClick="BtnReportePorcentajaIva_Click" />
@@ -51,28 +51,28 @@
                             <ItemTemplate>
                                 <tr>
                                     <td>
-                                        <center><%# Eval("[\"GrupoAlimento\"]") %></center>
+                                        <center><%# Eval("cat.grupoAlimentos") %></center>
                                     </td>
                                     <td>
-                                        <center><%# Eval("[\"Categoría\"]") %></center>
+                                        <center><%# Eval("cat.nombre") %></center>
                                     </td>
                                     <td>
-                                        <center><%# Eval("[\"IvaCategoría\"]") %></center>
+                                        <center><%# Eval("cat.iva") %></center>
                                     </td>
                                     <td>
-                                        <center><%# Eval("[\"Producto\"]") %></center>
+                                        <center><%# Eval("nombre") %></center>
                                     </td>
                                     <td>
-                                        <center><%# Eval("[\"Stock\"]") %></center>
+                                        <center><%# Eval("stock") %></center>
                                     </td>
                                     <td>
-                                        <center><%# Eval("[\"UnidadVenta\"]") %></center>
+                                        <center><%# Eval("unidadVenta") %></center>
                                     </td>
                                     <td>
-                                        <center><%# Eval("[\"PrecioSinIva\"]") %></center>
+                                        <center><%# Eval("precioSinIva") %></center>
                                     </td>
                                     <td>
-                                        <center><%# Eval("[\"IvaProducto\"]") %></center>
+                                        <center><%# Eval("Iva") %></center>
                                     </td>
                                 </tr>
                             </ItemTemplate>
@@ -83,8 +83,15 @@
         </div>
     </asp:Panel>
 
+    <asp:Panel ID="panelAlertaError" CssClass="alert alert-danger" runat="server" Visible="false">
+        <asp:Label ID="labelError" Text="" runat="server" />
+        <button type="button" class="close" onclick="cerrarAlertaError()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </asp:Panel>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1, /css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
@@ -105,6 +112,10 @@
             dropRight: true,
         });
     });
+
+    function cerrarAlertaError() {
+        document.getElementById('<%= panelAlertaError.ClientID %>').style.display = 'none';
+    }
 
 </script>
 

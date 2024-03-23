@@ -33,13 +33,13 @@ namespace InVentSoft.UI
         protected global::System.Web.UI.WebControls.Button reportecategoria;
 
         /// <summary>
-        /// Control reporteporcentajeiva.
+        /// Control txtreporteporcentajeiva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox reporteporcentajeiva;
+        protected global::System.Web.UI.WebControls.TextBox txtreporteporcentajeiva;
 
         /// <summary>
         /// Control BtnReportePorcentajaIva.
@@ -67,5 +67,23 @@ namespace InVentSoft.UI
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rpReportes;
+
+        /// <summary>
+        /// Control panelAlertaError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelAlertaError;
+
+        /// <summary>
+        /// Control labelError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelError;
     }
 }
