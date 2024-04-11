@@ -23,7 +23,7 @@
                             <asp:TextBox ID="cantidadproductos" type="number" placeholder="Ingrese la cantidad" min="1" max="100" step="1" CssClass="form-control" runat="server"></asp:TextBox>
                         </div>
                     </div>
-                    <asp:Button Text="Agregar" CssClass="btn btn-success" runat="server" Style="margin-top: 10px;" />
+                    <asp:Button ID="BtnAgregar" Text="Agregar" CssClass="btn btn-success" runat="server" Style="margin-top: 10px;" OnClick="BtnAgregar_Click" />
                 </div>
             </div>
 
@@ -37,17 +37,17 @@
 
                         <div class="form-group">
                             <label for="subtotal">Subtotal:</label>
-                            <span id="subtotal">₡2000</span>
+                            <span id="subtotal" runat="server">0</span>
                         </div>
 
                         <div class="form-group">
                             <label for="iva">IVA:</label>
-                            <span id="iva">₡3500</span>
+                            <span id="iva" runat="server">0</span>
                         </div>
 
                         <div class="form-group">
                             <label for="total">Total:</label>
-                            <span id="total">₡5500</span>
+                            <span id="total" runat="server">0</span>
                         </div>
                         <hr />
                         <asp:Button ID="BtnPagar" Text="Pagar" CssClass="btn btn-primary" runat="server" OnClick="BtnPagar_Click" />
@@ -86,13 +86,13 @@
 
                         <tr>
                             <td>
-                                <center>₡2000</center>
+                                <center id="reporteSubTotal" runat="server"></center>
                             </td>
                             <td>
-                                <center>₡3500</center>
+                                <center id="reporteIva" runat="server"></center>
                             </td>
                             <td>
-                                <center>₡5500</center>
+                                <center id="reporteTotal" runat="server"></center>
                             </td>
                         </tr>
 
