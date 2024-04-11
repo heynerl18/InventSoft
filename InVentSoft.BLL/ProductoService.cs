@@ -6,6 +6,12 @@ namespace InVentSoft.BLL
 {
     public class ProductoService
     {
+        public static List<ProductoDTO> ObtenerProductosConStock()
+        {
+            List<ProductoDTO> productos = InVentSoft.DAL.ProductoService.ObtenerProductosConStock();
+
+            return productos;
+        }
         public static List<ProductoDTO> ObtenerProductos()
         {
             List<ProductoDTO> productos = InVentSoft.DAL.ProductoService.ObtenerProductos();

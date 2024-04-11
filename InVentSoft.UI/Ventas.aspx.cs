@@ -33,18 +33,52 @@ namespace InVentSoft.UI
 
         private List<ProductoDTO> ObtenerProductos()
         {
-            return BLL.ProductoService.ObtenerProductos();
+            return BLL.ProductoService.ObtenerProductosConStock();
         }
 
         protected void BtnAgregar_Click(object sender, EventArgs e)
         {
             int idProducto = int.Parse(ddlproductos.SelectedValue);
             int cantidadProductos = int.Parse(cantidadproductos.Text);
-            calcularVentaProductos(idProducto, cantidadProductos);
+            
+            ProductoDTO aux = BLL.ProductoService.ConsultarProducto(idProducto);
+            
 
+            if (aux != null && cantidadProductos <= aux.Stock)
+            {
+
+                if(aux.Iva == null)
+                {
+                    aux.Iva = aux.cat.iva;
+                }
+
+                producto modificar = new producto
+                {
+                    id = aux.Id,
+                    nombre = aux.Nombre,
+                    categoriaid = aux.cat.id,
+                    precioSinIva = aux.PrecioSinIva,
+                    Iva = aux.Iva,
+                    unidadVenta = aux.UnidadVenta,
+                    stock = aux.Stock
+                };
+                modificar.stock -= cantidadProductos;
+                DAL.ProductoService.ModificarProducto(modificar);
+                modificar = null;
+                calcularVentaProductos(idProducto, cantidadProductos);
+
+            }
+            else
+            {
+                Response.Write("<script>alert('La cantidad de productos a vender es mayor que el stock disponible.');</script>");
+            }
+        
+            
             /* Limpiar campos */
             ddlproductos.SelectedIndex = 0;
             cantidadproductos.Text = "";
+            aux = null;
+           
         }
 
         private void calcularVentaProductos(int idProducto, int cantidadProductos)

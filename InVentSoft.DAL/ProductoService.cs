@@ -9,6 +9,25 @@ namespace InVentSoft.DAL
 {
     public class ProductoService
     {
+        public static List<ProductoDTO> ObtenerProductosConStock()
+        {
+            List<ProductoDTO> ProductoDTOs = new List<ProductoDTO>();
+
+            using (inventEntities db = new inventEntities())
+            {
+                // Obtener los productos con stock mayor que cero
+                List<producto> productos = db.producto.Include("categoria").Where(p => p.stock > 0).ToList();
+
+                // Mapear los productos a objetos ProductoDTO
+                foreach (producto p in productos)
+                {
+                    ProductoDTOs.Add(new ProductoDTO(p));
+                }
+            }
+
+            return ProductoDTOs;
+        }
+
         public static List<ProductoDTO> ObtenerProductos()
         {
             List<ProductoDTO> ProductoDTOs = new List<ProductoDTO>();
